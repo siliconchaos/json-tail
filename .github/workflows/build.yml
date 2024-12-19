@@ -50,7 +50,7 @@ jobs:
     - name: Upload artifacts
       uses: actions/upload-artifact@v4
       with:
-        name: binaries
+        name: binary-${{ matrix.GOOS }}-${{ matrix.GOARCH }}
         path: dist/
         retention-days: 5
         overwrite: true
@@ -61,16 +61,17 @@ jobs:
     if: startsWith(github.ref, 'refs/tags/') || (github.event_name == 'workflow_dispatch' && inputs.release_tag != '')
     runs-on: ubuntu-latest
     steps:
-      - name: Download artifacts
+      - name: Download all artifacts
         uses: actions/download-artifact@v4
         with:
-          name: binaries
           path: dist
+          pattern: binary-*
+          merge-multiple: true
           overwrite: true
 
       - name: Create/Update Release
         uses: softprops/action-gh-release@v1
         with:
-          files: dist/*
+          files: dist/**/*
           generate_release_notes: true
           tag_name: ${{ github.event.inputs.release_tag || github.ref_name }}
