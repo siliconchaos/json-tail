@@ -1,0 +1,14 @@
+[
+  "Initial log entry at startup",
+  "User login: alice@example.com",
+  "Database connection established",
+  "Cache initialized",
+  "Configuration loaded from config.yaml",
+  "API server started on port 8080",
+  "New user registration: bob@example.com",
+  "Payment processed for order #12345",
+  "Daily backup completed successfully",
+  "System health check: All services running",
+  "New entry: Alert triggered",
+  "Another entry: Task completed"
+]
