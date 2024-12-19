@@ -58,6 +58,8 @@ jobs:
   release:
     name: Create/Update Release
     needs: build
+    permissions:
+      contents: write      # This is required for creating/updating releases
     if: startsWith(github.ref, 'refs/tags/') || (github.event_name == 'workflow_dispatch' && inputs.release_tag != '')
     runs-on: ubuntu-latest
     steps:
@@ -75,3 +77,4 @@ jobs:
           files: dist/**/*
           generate_release_notes: true
           tag_name: ${{ github.event.inputs.release_tag || github.ref_name }}
+          token: ${{ secrets.GITHUB_TOKEN }}
