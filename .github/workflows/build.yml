@@ -47,6 +47,7 @@ jobs:
         name: binaries
         path: dist/
         retention-days: 5
+        overwrite: true
 
   release:
     name: Create Release
