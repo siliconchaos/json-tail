@@ -42,7 +42,7 @@ jobs:
         go build -v -o "dist/${{ matrix.OUTPUT_NAME }}" .
 
     - name: Upload artifacts
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: binaries
         path: dist/
